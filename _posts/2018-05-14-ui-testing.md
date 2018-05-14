@@ -12,11 +12,11 @@ meta:
   structured_content: '{"oembed":{},"overlay":true}'
   _thumbnail_id: '90'
 ---
-最近研究了一下 UITesting 的使用，本文会介绍其中遇到的坑以及解决方案。在看本文之前希望你已经大致了解 [UI Testing](https://onevcat.com/2015/09/ui-testing/) 和 [Cheat Sheet](https://github.com/joemasilotti/UI-Testing-Cheat-Sheet).
+最近研究了一下 UI Testing 的使用，发现还是有蛮多坑的，本文会介绍笔者遇到的坑和解决方案。在看本文之前希望你已经大致了解 UI Testing （可以看 onevcat 的[介绍](https://onevcat.com/2015/09/ui-testing/)） 和 [UI Testing Cheat Sheet](https://github.com/joemasilotti/UI-Testing-Cheat-Sheet).
 
 ## 与宿主应用 (Host App) 交互
 
-UI Testing 运行在另外一个 Target 中，因此无法与宿主应用交互。但如果我们需要在特定的启动条件下测试应用时要如何操作呢？ 答案是利用 `XCUIApplication` 的 `launchArguments`.
+UI Testing 运行在另外一个沙盒中，因此无法访问宿主应用的信息。那当我们希望在特定的启动条件下测试应用，要如何操作呢？ 答案是利用 `XCUIApplication` 的 `launchArguments`.
 
 首先，需要在 Test 中设定参数：
 
@@ -45,9 +45,9 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 }
 ```
 
-当然，这种做法的坏处是测试的代码入侵了应用代码。
+当然，这种做法的坏处是测试代码侵入了应用代码。虽然可以通过使用宏让这些代码在 Release 状态下不生效，但还是无法保持代码的整洁。
 
-## 更友好的 XCUIElement 获取
+## 更优雅的 `XCUIElement` 获取
 
 在使用自动录制生成测试代码时，经常会产生令人非常费解的获取 `XCUIElement` 的代码。这种代码基本无法理解，更谈不上维护了。
 
@@ -97,3 +97,26 @@ func forceTap() {
 ```
 
 ## 切换输入框
+
+另外一个奇怪的问题是，在多个输入框切换焦点是会莫名的失败，如：
+
+```swift
+let userNameTextField = app.textFields["username"]
+userNameTextField.tap()
+userNameTextField.typeText(userName)
+
+let passwordField = app.textFields["password"]
+passwordField.tap()
+passwordField.typeText(userName)
+```
+
+`passwordField.tap()` 可以无法正确的执行。一个 workaround 在第一个输入框输入完成之后，将键盘弹下再弹出，然后尝试输入：
+
+```swift
+/// hides keyboard if present & obstructs hit space
+func hideKeyboardIfNeeded() {
+    if keyboardHideButton.coordinate(withNormalizedOffset: CGVector.zero).screenPoint.x < UIScreen.main.bounds.width {
+        keyboardHideButton.tap()
+    }
+}
+```
