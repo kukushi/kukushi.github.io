@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About kukushi
+title: Feedback
 categories: []
 tags: []
 status: publish
@@ -9,7 +9,7 @@ published: true
 meta: {}
 ---
 
-<h1 style="text-align: center; margin-bottom: 40px; margin-top: -50px">About kukushi</h1>
+<h1 style="text-align: center; margin-bottom: 40px; margin-top: -50px">Feedback</h1>
 
 <div id="rightCol">
 </div>
