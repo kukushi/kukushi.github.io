@@ -1,4 +1,4 @@
-<h1><a href="https://kushi.me">kushi.me</a></h1>
+<h1><a href="https://kukushi.github.io">kukushi.github.io</a></h1>
 
 Forked from [KrauseFx/krausefx.com](https://github.com/KrauseFx/krausefx.com/).
 
