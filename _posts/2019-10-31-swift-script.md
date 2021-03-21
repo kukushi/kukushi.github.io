@@ -20,7 +20,7 @@ meta:
 
 ## 先驱：Marathon
 
-相信每一位学习过 Swift 的同学都或多或少从 [Swift by Sundell](https://www.swiftbysundell.com) 博客中获益过。 [Marathon](https://github.com/JohnSundell/Marathon) 是高产的 Sundell 基于 Swift Package Mananger 开发的帮助开发者开发命令行的工具，提供了依赖管理、编译、安装等功能。
+相信每一位学习过 Swift 的同学都或多或少从 [Swift by Sundell](https://www.swiftbysundell.com) 博客中获益过。 [Marathon](https://github.com/JohnSundell/Marathon) 是高产的 Sundell 基于 Swift Package Manager 开发的帮助开发者开发命令行的工具，提供了依赖管理、编译、安装等功能。
 
 作为示例，让我们来编写一个脚本，在终端中用浏览器打开当前目录 Git 仓库的地址。举个🌰，在 Alamofire 的目录下执行这个脚本，就会在浏览器中打开 [https://github.com/Alamofire/Alamofire](https://github.com/Alamofire/Alamofire).  
 
@@ -177,7 +177,7 @@ let package = Package(
 )
 
 ```
-执行 `swift package reslove` 解析并获取依赖。通过 `swift package generate-xcodeproj` 生成一个 Xcode 工程后，可以直接用 Xcode 编辑。
+执行 `swift package resolve` 解析并获取依赖。通过 `swift package generate-xcodeproj` 生成一个 Xcode 工程后，可以直接用 Xcode 编辑。
 
 > 记得将运行环境修改为 Mac！
 
