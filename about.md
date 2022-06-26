@@ -14,7 +14,6 @@ meta: {}
 <div id="rightCol">
 </div>
 
-
 <div style="width: 100%; float: left; margin-top: 20px">
   <hr />
 
@@ -73,14 +72,14 @@ meta: {}
   }
   @media screen and (min-width: 800px) {
     #leftCol {
-        width: 40%; 
+        width: 40%;
         float: left;
       }
     }
   }
   @media screen and (min-width: 800px) {
     #rightCol {
-      width: 55%; 
+      width: 55%;
       float: right;
     }
   }
