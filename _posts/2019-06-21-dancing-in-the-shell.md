@@ -75,20 +75,20 @@ Opens files for editing in XCode.
 ```shell
 oop() {
     file=$(find -E . -regex ".*xcworkspace" -maxdepth 1)
-	fileLength=${#file}
-	if [ "$fileLength" = 0 ]; then
-		file=$(find -E . -regex ".*xcodeproj" -maxdepth 1)
-	fi
-	fileLength=${#file}
+    fileLength=${#file}
+    if [ "$fileLength" = 0 ]; then
+        file=$(find -E . -regex ".*xcodeproj" -maxdepth 1)
+    fi
+    fileLength=${#file}
 
-	if [ "$fileLength" = 0 ]; then
-		echo ">>> 🤔  No Xcode Project Found!"
-	else
-		echo ">>> 💪  Opening $file"
-		xcode=$(xcode-select -p)
-		xcode=$(echo $xcode | cut -d'/' -f-3)
-		open -a $xcode $file
-	fi
+    if [ "$fileLength" = 0 ]; then
+        echo ">>> 🤔  No Xcode Project Found!"
+    else
+        echo ">>> 💪  Opening $file"
+        xcode=$(xcode-select -p)
+        xcode=$(echo $xcode | cut -d'/' -f-3)
+        open -a $xcode $file
+    fi
 ```
 
 > 习惯使用 AppCode 的话，可以把 Bash 代码中的 Xcode 替换为 AppCode。
@@ -107,17 +107,17 @@ alias c='code .'
 
 ```shell
 syncdev() {
-	git stash
+    git stash
 
-	echo ">>> Updating dev"
-	git checkout dev
-	git pull origin dev
+    echo ">>> Updating dev"
+    git checkout dev
+    git pull origin dev
 
-	echo ">>> Applying diff"
-	git co -
-	git rebase dev
+    echo ">>> Applying diff"
+    git co -
+    git rebase dev
 
-	git stash pop
+    git stash pop
 }
 ```
 
@@ -146,8 +146,8 @@ $ lab mr create origin $branch -a $assigne -m $message1 -m $mesasge2
 ```shell
 # mmr $branch $reviewer
 mmr () {
-	latestMessage=$(git log -1 --pretty=%B)
-	lab mr create origin $1 -a $2 -m $latestMessage -m $2
+    latestMessage=$(git log -1 --pretty=%B)
+    lab mr create origin $1 -a $2 -m $latestMessage -m $2
 }
 ```
 

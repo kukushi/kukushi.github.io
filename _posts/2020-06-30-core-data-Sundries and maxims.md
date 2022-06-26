@@ -11,7 +11,6 @@ meta:
   structured_content: '{"oembed":{},"overlay":true}'
   _thumbnail_id: '90'
 ---
-# WWDC20 10017 - Core Data 杂项与准则
 
 > 本文是对 WWDC 2020 [Core Data: Sundries and maxims](https://developer.apple.com/videos/play/wwdc2020/10017/) Session 的翻译。
 
@@ -21,7 +20,7 @@ meta:
 - 定制查询操作
 - 响应变化通知
 
-下面会以这个[地震信息列表 Demo](https://developer.apple.com/documentation/coredata/loading_and_displaying_a_large_data_feed) 为例，说明上面的内容： 
+下面会以这个[地震信息列表 Demo](https://developer.apple.com/documentation/coredata/loading_and_displaying_a_large_data_feed) 为例，说明上面的内容：
 
 ![](https://images.xiaozhuanlan.com/photo/2020/6b44c1dd8f4d5e52a887d615ecb2a949.png)
 示例中，从 USGS（美国地质调查局） 获取到 JSON Feed 通过 JSON Parser 解析后，通过 Background Context 存入到持久化存储中，View Context 合并过数据后交给显示层。
@@ -69,10 +68,10 @@ open class NSBatchInsertRequest : NSPersistentStoreRequest {
 // Earthquakes Sample - Regular Save
 
    for quakeData in quakesBatch {
-     		// 逐个创建 Entity
+        // 逐个创建 Entity
         guard let quake = NSEntityDescription.insertNewObject(forEntityName: "Quake", into: taskContext) as? Quake else { ... }
         do {
-          	// 逐个填充数据
+            // 逐个填充数据
             try quake.update(with: quakeData)
         } catch QuakeError.missingData {
             ...
@@ -84,6 +83,7 @@ open class NSBatchInsertRequest : NSPersistentStoreRequest {
         try taskContext.save()
     } catch { ... }
 ```
+
 使用老的数组式 Batch Request 插入对象：
 
 ```swift
@@ -112,7 +112,7 @@ do {
 var batchInsert = NSBatchInsertRequest(entityName: "Quake", dictionaryHandler: { 
     (dictionary) in
         if (blockCount == batchSize) {
-          	// 返回 true 表示结束
+            // 返回 true 表示结束
             return true
         } else {
             dictionary = quakesBatch[blockCount]
@@ -134,7 +134,7 @@ var batchInsert = NSBatchInsertRequest(entityName: "Quake", dictionaryHandler: {
 | iOS 13 数组式 Batch       | 30s      | 25.2 M     |
 | **iOS 14 Block 式 Batch** | **11s**  | **24.3 M** |
 
-**Block 式 Batch 无论在耗时还是在内存峰值上都有最好的表现。**非 Batch 的耗时主要花费在合并数据更变 Notification 上了。 
+**Block 式 Batch 无论在耗时还是在内存峰值上都有最好的表现。**非 Batch 的耗时主要花费在合并数据更变 Notification 上了。
 
 #### 自动合并对象
 
@@ -163,11 +163,11 @@ do {
 
 ### 批量删除
 
-`NSBatchDeleteRequest ` 支持：
+`NSBatchDeleteRequest` 支持：
 
 - 批量删除对象图中的大部分内容
 - 遵守对象关系。删除是级联的，关系也会被置空
-- 适用于清理过期对象或控制对象的 TTL（存活时间） 
+- 适用于清理过期对象或控制对象的 TTL（存活时间）
 
 下面的代码在后台线程将删除所有 `creationDate` 在 30 天之前的数据：
 
@@ -265,7 +265,7 @@ fetch.resultType = .dictionaryResultType
 
 ## 响应通知
 
-Core Data 提供了丰富的通知，让应用可以实时得知数据的变化。本文将着重介绍 `ObjectID` 通知和远端改变通知。 
+Core Data 提供了丰富的通知，让应用可以实时得知数据的变化。本文将着重介绍 `ObjectID` 通知和远端改变通知。
 
 ### `objectID` 通知
 
@@ -279,7 +279,7 @@ extension NSManagedObjectContext {
     public static let didSaveObjectsNotification: Notification.Name
     public static let didChangeObjectsNotification: Notification.Name
   
-  	// ObjectID
+    // ObjectID
     public static let didSaveObjectIDsNotification: Notification.Name
     public static let didMergeChangesObjectIDsNotification: Notification.Name
 }
@@ -298,7 +298,7 @@ extension NSManagedObjectContext {
         case deletedObjects
         case refreshedObjects
         case invalidatedObjects
-      	// Object ID
+        // Object ID
         case insertedObjectIDs
         case updatedObjectIDs
         case deletedObjectIDs
@@ -324,7 +324,6 @@ storeDesc.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
 开启了远程改变通知后，应用可以接收到进程外的数据改变（如 Share Extension），并且可以知道是哪个进程，在什么时刻，在哪里改变了什么数据。
 
 值得一提的是，对于持久化历史的查询也同样支持通过条件裁剪：
-
 
 ```swift
 let changeDesc = NSPersistentHistoryChange.entityDescription(with: moc)

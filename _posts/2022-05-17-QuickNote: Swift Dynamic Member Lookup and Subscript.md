@@ -58,9 +58,9 @@ class RunMebmberLookup: Runnable {
     static func run() {
         let writer = Writer()
         let member = MemberDelegater(writer)
-      	// 通过 Dynamic Member Lookup 访问 subscript
+        // 通过 Dynamic Member Lookup 访问 subscript
         let result = member[index: "123", index2: "123"]
-      	// 通过 Dynamic Member Lookup 访问属性
+        // 通过 Dynamic Member Lookup 访问属性
         let result2 = member.result
         print(result, result2)
     }

@@ -11,7 +11,6 @@ meta:
   structured_content: '{"oembed":{},"overlay":true}'
   _thumbnail_id: '90'
 ---
-# Swift 如何正确的实现 Equatable
 
 ## 从 NSObject 的判等说起
 
@@ -28,11 +27,12 @@ class Object: NSObject {
     }
     
     static func ==(lhs: Object, rhs: Object) -> Bool {
-      	// 这里一般是由于业务需要，故意跳过了 NSObject 父类的判等
+        // 这里一般是由于业务需要，故意跳过了 NSObject 父类的判等
         lhs.value == rhs.value
     }
 }
 ```
+
 简单跑起来也非常正确，子类的 `==` 被正确调用了。
 
 ```swift
@@ -40,6 +40,7 @@ let a = Object(value: 1)
 let b = Object(value: 1)
 a == b // true
 ```
+
 多测试一些 Case，发现在 `Object` 一旦在其他容器（ 如 `Optional`， 数组）里结果就不对了：
 
 ```swift
@@ -59,11 +60,12 @@ extension NSObject : Equatable, Hashable {
 // ...
 }
 ```
+
 那把判等逻辑移动到 `isEqual` 就万事大吉了！
 
 ```swift
 class Object: NSObject {
-  	/...
+    //...
   
     override func isEqual(_ object: Any?) -> Bool {
         guard let object = object as? Object else {
@@ -117,13 +119,14 @@ class Son: Parent {
 ```
 swiftc -emit-sil -Onone main.swift > main.swift.sil
 ```
+
 可以看到整个生成的 SIL  文件中，唯一一个 `sil_witness_table` 就是 `Parent` 的，`Son` 并没有独立的 PWT。
 
 ```swift
 // ...
 
 sil_witness_table hidden Parent: Equatable module main {
-  method #Equatable."==": <Self where Self : Equatable> (Self.Type) -> (Self, Self) -> Bool : @$s4main6ParentCSQAASQ2eeoiySbx_xtFZTW	// protocol witness for static Equatable.== infix(_:_:) in conformance Parent
+  method #Equatable."==": <Self where Self : Equatable> (Self.Type) -> (Self, Self) -> Bool : @$s4main6ParentCSQAASQ2eeoiySbx_xtFZTW // protocol witness for static Equatable.== infix(_:_:) in conformance Parent
 }
 
 //...
@@ -134,6 +137,7 @@ sil_witness_table hidden Parent: Equatable module main {
 ## 如何正确的实现 Equatable
 
 判等作为日常编程最简单基础的一项行为，也需要满足很多的特性，包括：
+
 1. 反射性：对于 `x`，`x == x` 应该是 `true`。
 2. 对称性：对于 `x` 和 `y`，`y == x` 与 `x == y` 应返回相同的值。
 3. 传递性：对于 `x` `y` `z`，当 `x == y`，`y == z` 都为 `true` 时，`x == z` 也应为 `true`。
@@ -181,6 +185,7 @@ class Son: Parent {
  a == s2 // true
  s == s2 // false
 ```
+
 为此需要再加上一些类型检查：
 
 ```swift
@@ -241,4 +246,3 @@ class Son: Parent {
 - [swift/docs/SIL.rst](https://github.com/apple/swift/blob/main/docs/SIL.rst#witness-tables)
 
 [^1]: [How to Write an Equality Method in Java](https://www.artima.com/lejava/articles/equality.html)
-

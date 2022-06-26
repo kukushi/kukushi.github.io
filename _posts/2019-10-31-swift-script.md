@@ -12,8 +12,6 @@ meta:
   _thumbnail_id: '90'
 ---
 
-# Swift 脚本方案简析
-
 几年前，"人生苦短，我用 Python" 这种说法还颇为流行，受此影响，我也试着 Python 写了几个脚本。Python 作为动态语言，写起来确实是行云流水，酣畅淋漓。可惜好景不长，几个月后我再次打开这些 Python 脚本，看着这些代码的时候不禁发出了哲学三问：“你是什么类型？你在哪里被定义？你在哪里被使用”？（当然这和我薄弱的 Python 熟练度有关）。这时候我想，我能否使用强类型的 Swift 编写脚本呢？答案是肯定的，而且已经有不少开源大佬都在这条路上作出了贡献。
 
 > 本文基于 macOS & Swift 5.1 编写。
@@ -29,6 +27,7 @@ meta:
 ```shell
 marathon create ogu # ogu is short for 'open git url'
 ```
+
 > Marathon 内部在 `~/.marathon/Script/Cache` 目录下创建了一个新的 Swift Package，后续的依赖管理、编译都基于这个 Package 展开。
 
 接着开始编辑脚本：
@@ -36,6 +35,7 @@ marathon create ogu # ogu is short for 'open git url'
 ```shell
 marathon edit ogu
 ```
+
 键入实际的代码：
 
 ```swift
@@ -106,6 +106,7 @@ func convertGitAddressToWebURL(from urlString: String) -> String? {
 
 main()
 ```
+
 可以看到，和普通的 Swift 代码唯一的不同支出就是 `import` 之后的注释，它让 `marathon` 知道这个依赖的地址。
 
 编写完成后，通过 `marathon run ogu --verbose` 执行这个脚本。确认实现符合预期后，执行 `marathon install ogu` 将编译好的执行文件安装到 `/usr/local/bin`，这样在命令行输入 `ogu` 就可以直接执行我们的脚本了。
@@ -140,6 +141,7 @@ import Files // @JohnSundell ~> 4.0.0
 ```shell
 swift sh eject ogu.swift
 ```
+
 遗憾的是，`swift-sh` 并没有提供方法将编译后的可执行文件直接安装到 `usr/bin/local` 中，可以通过 `~/Library/Developer/swift-sh.cache/ogu/.build/release` 里找到编译结果放到 `usr/bin/local`。
 
 ## Swift Package Manager
@@ -177,6 +179,7 @@ let package = Package(
 )
 
 ```
+
 执行 `swift package resolve` 解析并获取依赖。通过 `swift package generate-xcodeproj` 生成一个 Xcode 工程后，可以直接用 Xcode 编辑。
 
 > 记得将运行环境修改为 Mac！
@@ -197,9 +200,7 @@ install .build/release/ogu /usr/local/bin
 
 对于单文件的脚本，`swift-sh` 无疑是最佳的选择。而当脚本日益增大，将它转换成一个 Swift Package 维护则是一个更好的选择。
 
-
 ## 参考链接
 
 - [Swift Package Manager](https://swift.org/package-manager/)
 - [swift-sh - NSHipster](https://nshipster.com/swift-sh/)
-
