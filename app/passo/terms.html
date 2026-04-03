@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Passo Terms of Service</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="../icon.svg">
+    <style>
+        :root {
+            color-scheme: dark;
+            --bg-base: #06080d;
+            --bg-surface: rgba(20, 24, 38, 0.4);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --glass-bg: rgba(15, 23, 42, 0.6);
+            --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            --accent-blue: #0ea5e9;
+            --accent-soft: rgba(14, 165, 233, 0.15);
+            --font: 'Outfit', system-ui, -apple-system, sans-serif;
+            --line: rgba(255, 255, 255, 0.08);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font);
+            color: var(--text-main);
+            background-color: var(--bg-base);
+            overflow-x: hidden;
+            position: relative;
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.7;
+        }
+
+        /* Background Auras */
+        .aura-container {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            overflow: hidden; z-index: -1;
+            pointer-events: none;
+        }
+
+        .aura {
+            position: absolute;
+            filter: blur(100px);
+            opacity: 0.4;
+            animation: float-aura 20s ease-in-out infinite alternate;
+        }
+
+        .aura-1 { top: -10%; left: 0%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(14,165,233,0.1) 0%, rgba(14,165,233,0) 70%); }
+        .aura-2 { bottom: -20%; right: -10%; width: 60vw; height: 60vw; background: radial-gradient(circle, rgba(139,92,246,0.1) 0%, rgba(139,92,246,0) 70%); animation-delay: -5s; }
+
+        @keyframes float-aura {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(5%, 5%) scale(1.1); }
+            100% { transform: translate(-5%, -5%) scale(0.9); }
+        }
+
+        main {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 64px 20px 80px;
+        }
+
+        .hero, section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: var(--glass-border);
+            border-radius: 20px;
+            box-shadow: var(--glass-shadow);
+        }
+
+        .hero {
+            padding: 40px;
+            margin-bottom: 24px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 9999px;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            backdrop-filter: blur(8px);
+            color: var(--accent-blue);
+            margin-bottom: 16px;
+        }
+
+        h1, h2 {
+            line-height: 1.1;
+            margin: 0 0 16px;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 700;
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h2 { font-size: 24px; margin-top: 8px; }
+
+        p, li { font-size: 16px; font-weight: 300; }
+
+        .meta, .intro { color: var(--text-muted); }
+
+        .summary {
+            margin-top: 28px;
+            padding: 20px 24px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--line);
+        }
+
+        section { padding: 32px 40px; margin-top: 24px; }
+        
+        ul { margin: 16px 0 0; padding-left: 24px; }
+        li { margin-bottom: 8px; }
+
+        a { color: var(--accent-blue); text-decoration: none; transition: 0.2s; }
+        a:hover { color: #38bdf8; text-decoration: underline; }
+
+        code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 0.9em;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 640px) {
+            .hero, section { padding: 24px 20px; border-radius: 16px; }
+            main { padding: 32px 16px 40px; }
+        }
+    </style>
+</head>
+<body>
+<div class="aura-container">
+    <div class="aura aura-1"></div>
+    <div class="aura aura-2"></div>
+</div>
+<main class="fade-in">
+    <header class="hero">
+        <div class="eyebrow">Passo</div>
+        <h1>Terms of Service</h1>
+        <p class="meta"><strong>Effective date:</strong> April 3, 2026</p>
+        <p class="intro">
+            These Terms of Service ("Terms") govern your access to and use of Passo, the password manager app for iPhone, iPad, Mac, Autofill extensions, and related browser extensions.
+        </p>
+        <div class="summary">
+            <strong>In short:</strong> By using Passo, you agree to these Terms. Passo is provided "as is", and while we strive to provide a secure and reliable service, you are ultimately responsible for your master password and your encrypted data.
+        </div>
+    </header>
+
+    <section>
+        <h2>1. Acceptance of Terms</h2>
+        <p>
+            By downloading, installing, or using the Passo application or associated extensions, you agree to be bound by these Terms. If you do not agree to these Terms, do not use the service.
+        </p>
+    </section>
+
+    <section>
+        <h2>2. Security and Your Master Password</h2>
+        <p>
+            Passo uses a zero-knowledge architecture. This means your data is encrypted on your device using a master password that only you know.
+        </p>
+        <ul>
+            <li><strong>We do not know your master password.</strong></li>
+            <li><strong>We cannot reset your master password.</strong></li>
+            <li><strong>We cannot recover your data if you lose your master password.</strong></li>
+        </ul>
+        <p>
+            You are exclusively responsible for remembering your master password and keeping it safe.
+        </p>
+    </section>
+
+    <section>
+        <h2>3. Subscriptions and Payments</h2>
+        <p>
+            Passo offers premium features through an optional subscription ("Passo Pro").
+        </p>
+        <ul>
+            <li>Subscriptions are billed through Apple's App Store according to their terms and conditions.</li>
+            <li>Your subscription will automatically renew unless canceled at least 24 hours before the end of the current period.</li>
+            <li>You can manage and cancel your subscriptions by going to your App Store account settings after purchase.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>4. Acceptable Use</h2>
+        <p>You agree not to use Passo to:</p>
+        <ul>
+            <li>Store or transmit any content that is illegal, defamatory, or infringes on the rights of others.</li>
+            <li>Attempt to gain unauthorized access to our systems or other users' accounts.</li>
+            <li>Reverse engineer, decompile, or disassemble the application, except as permitted by applicable law.</li>
+            <li>Use the service in any way that could damage, disable, overburden, or impair our infrastructure.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>5. Disclaimer of Warranties</h2>
+        <p>
+            Passo is provided on an "AS IS" and "AS AVAILABLE" basis. We make no warranties, expressed or implied, regarding the application's availability, reliability, or that it will be error-free. To the maximum extent permitted by law, we disclaim all implied warranties, including but not limited to the implied warranties of merchantability and fitness for a particular purpose.
+        </p>
+    </section>
+
+    <section>
+        <h2>6. Limitation of Liability</h2>
+        <p>
+            In no event shall we be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation loss of profits, data, use, or goodwill, arising from your use of or inability to use the service, whether based on warranty, contract, tort, or any other legal theory.
+        </p>
+    </section>
+
+    <section>
+        <h2>7. Changes to Terms</h2>
+        <p>
+            We reserve the right to modify or replace these Terms at any time. We will provide notice of significant changes within the app or by other reasonable means. Your continued use of the service after such changes constitutes acceptance of the new Terms.
+        </p>
+    </section>
+
+    <section>
+        <h2>8. Contact Us</h2>
+        <p>If you have any questions about these Terms, please contact us at:</p>
+        <ul>
+            <li>Email: <a href="mailto:passo@sent.as">passo@sent.as</a></li>
+        </ul>
+    </section>
+</main>
+</body>
+</html>
