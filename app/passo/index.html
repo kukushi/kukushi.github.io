@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Passo | The Premium Password Manager</title>
-    <meta name="description" content="Passo is a beautiful, native password manager for iPhone and Mac with local libraries, biometric unlock, iCloud sync, and passkeys.">
+    <title data-i18n="title">Passo | Password Manager</title>
+    <meta name="description" data-i18n="description" content="Passo is a beautiful, native password manager for iPhone and Mac with local libraries, biometric unlock, iCloud sync, and passkeys.">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="../../icon.svg">
+    <link rel="icon" type="image/svg+xml" href="./icon.svg">
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
@@ -24,18 +24,28 @@
         <div class="container header-inner">
             <a class="brand" href="#top" aria-label="Passo homepage">
                 <div class="brand-icon">
-                    <img src="../../icon.svg" alt="" width="24" height="24">
+                    <img src="./icon.svg" alt="" width="24" height="24">
                 </div>
                 <span>Passo</span>
             </a>
 
             <nav class="site-nav" aria-label="Primary">
-                <a href="#features">Features</a>
-                <a href="#platforms">Platforms</a>
-                <a href="../../privacy-policy.html">Privacy</a>
+                <a href="#features" data-i18n="nav_features">Features</a>
+                <a href="#platforms" data-i18n="nav_platforms">Platforms</a>
+                <a href="./privacy-policy.html" data-i18n="nav_privacy">Privacy</a>
             </nav>
 
-            <a class="button button-glass header-cta" href="#download">Get Passo</a>
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="lang-switcher">
+                    <svg class="lang-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    <select id="lang-select" class="lang-select" onchange="if(window.setLanguage) window.setLanguage(this.value)">
+                        <option value="en">English</option>
+                        <option value="zh">中文</option>
+                        <option value="ja">日本語</option>
+                    </select>
+                </div>
+                <a class="button button-glass header-cta" href="#download" data-i18n="cta_get">Get Passo</a>
+            </div>
         </div>
     </header>
 
@@ -43,32 +53,33 @@
         <section class="hero">
             <div class="container hero-grid">
                 <div class="hero-copy slide-up fade-in">
-                    <div class="eyebrow glass-pill">
+                    <div class="eyebrow glass-pill" data-i18n="hero_eyebrow">
                         <span class="pulse-dot"></span> Next-gen Password Manager
                     </div>
-                    <h1>Passwords &amp; passkeys,<br> <span class="text-gradient">kept beautiful.</span></h1>
-                    <p class="hero-text">
+                    <h1 data-i18n="hero_title">Passwords &amp; passkeys,<br> <span class="text-gradient">kept beautiful.</span></h1>
+                    <p class="hero-text" data-i18n="hero_text">
                         Passo gives you one stunningly secure password manager for iPhone and Mac, featuring instantaneous unlock, seamless iCloud sync, and native biometric integration.
                     </p>
 
                     <div class="hero-actions">
-                        <a class="button button-glow" href="#" data-store-link="ios">
+                        <a class="button button-glow" href="#" data-store-link="ios" data-i18n="hero_dl_ios">
                             Download for iOS
                         </a>
-                        <a class="button button-glass" href="#" data-store-link="mac">
+                        <a class="button button-glass" href="#" data-store-link="mac" data-i18n="hero_dl_mac">
                             Download for Mac
                         </a>
                     </div>
 
                     <div class="hero-points">
-                        <div class="point-chip"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg> Local Library</div>
-                        <div class="point-chip"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="3"/></svg> Face ID / Touch ID</div>
-                        <div class="point-chip"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19c2.485 0 4.5-2.015 4.5-4.5S19.985 10 17.5 10c-.394 0-.77.05-1.127.143A6.985 6.985 0 0 0 10 4a7 7 0 0 0-6.91 8A4.5 4.5 0 0 0 4.5 21H17z"></path></svg> iCloud sync</div>
+                        <div class="point-chip" data-i18n="point_local"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg> Local Library</div>
+                        <div class="point-chip" data-i18n="point_bio"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="3"/></svg> Face ID / Touch ID</div>
+                        <div class="point-chip" data-i18n="point_sync"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19c2.485 0 4.5-2.015 4.5-4.5S19.985 10 17.5 10c-.394 0-.77.05-1.127.143A6.985 6.985 0 0 0 10 4a7 7 0 0 0-6.91 8A4.5 4.5 0 0 0 4.5 21H17z"></path></svg> iCloud sync</div>
                     </div>
                 </div>
 
-                <div class="hero-visual stagger-fade-in" aria-hidden="true">
-                    <div class="mock-mac glass-panel">
+                <div class="hero-visual" aria-hidden="true">
+                    <div class="stagger-fade-in" style="transition-delay: 0.1s; position: absolute; inset: 0;">
+                        <div class="mock-mac glass-panel">
                         <div class="mock-bar">
                             <span class="dot close"></span>
                             <span class="dot minimize"></span>
@@ -77,21 +88,21 @@
                         <div class="mock-body">
                             <div class="mock-sidebar">
                                 <div class="mock-sidebar-title">PASSO</div>
-                                <div class="mock-item active">
+                                <div class="mock-item active" data-i18n="mock_all">
                                     <div class="mock-icon"></div> All Items
                                 </div>
-                                <div class="mock-item">
+                                <div class="mock-item" data-i18n="mock_fav">
                                     <div class="mock-icon star"></div> Favorites
                                 </div>
-                                <div class="mock-item">
+                                <div class="mock-item" data-i18n="mock_passkeys">
                                     <div class="mock-icon key"></div> Passkeys
                                 </div>
-                                <div class="mock-item">
+                                <div class="mock-item" data-i18n="mock_cards">
                                     <div class="mock-icon card"></div> Cards
                                 </div>
                             </div>
                             <div class="mock-panel">
-                                <div class="mock-search glass-input">
+                                <div class="mock-search glass-input" data-i18n="mock_search">
                                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
                                     Search passwords...
                                 </div>
@@ -124,13 +135,15 @@
                             </div>
                         </div>
                     </div>
+                    </div>
 
-                    <div class="mock-phone floating glass-panel-dark">
+                    <div class="stagger-fade-in" style="transition-delay: 0.3s; position: absolute; inset: 0; pointer-events: none;">
+                        <div class="mock-phone floating glass-panel-dark" style="pointer-events: auto;">
                         <div class="mock-phone-notch"></div>
                         <div class="mock-phone-screen">
                             <div class="phone-header">
                                 <div class="pill-badge glass-pill">Face ID <span class="lock-icon"></span></div>
-                                <h2>Unlocked</h2>
+                                <h2 data-i18n="mock_unlocked">Unlocked</h2>
                             </div>
                             <div class="phone-stack">
                                 <div class="phone-card p-card-1">
@@ -148,6 +161,7 @@
                             </div>
                         </div>
                         <div class="phone-glow"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -155,39 +169,39 @@
 
         <section class="section features-section" id="features">
             <div class="container">
-                <div class="section-heading text-center stagger-fade-in">
-                    <div class="eyebrow glass-pill center">Core features</div>
-                    <h2>Everything important,<br>without the noise.</h2>
+                <div class="section-heading text-center">
+                    <div class="eyebrow glass-pill center stagger-fade-in" data-i18n="feat_eyebrow" style="transition-delay: 0.1s">Core features</div>
+                    <h2 class="stagger-fade-in" data-i18n="feat_title" style="transition-delay: 0.2s">Everything important,<br>without the noise.</h2>
                 </div>
 
-                <div class="feature-grid stagger-fade-in">
-                    <article class="feature-card glass-panel interactive-card">
+                <div class="feature-grid">
+                    <article class="feature-card glass-panel interactive-card stagger-fade-in" style="transition-delay: 0.05s">
                         <div class="feature-icon secure-bg">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
                         </div>
-                        <h3>Secure by default</h3>
-                        <p>Local encrypted libraries and seamless biometric unlock support right out of the box.</p>
+                        <h3 data-i18n="feat1_title">Secure by default</h3>
+                        <p data-i18n="feat1_desc">Local encrypted libraries and seamless biometric unlock support right out of the box.</p>
                     </article>
-                    <article class="feature-card glass-panel interactive-card">
+                    <article class="feature-card glass-panel interactive-card stagger-fade-in" style="transition-delay: 0.15s">
                         <div class="feature-icon sync-bg">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
                         </div>
-                        <h3>Moves with you</h3>
-                        <p>End-to-end encrypted iCloud sync keeps your credentials updated across all Apple devices.</p>
+                        <h3 data-i18n="feat2_title">Moves with you</h3>
+                        <p data-i18n="feat2_desc">End-to-end encrypted iCloud sync keeps your credentials updated across all Apple devices.</p>
                     </article>
-                    <article class="feature-card glass-panel interactive-card">
+                    <article class="feature-card glass-panel interactive-card stagger-fade-in" style="transition-delay: 0.25s">
                         <div class="feature-icon import-bg">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 17l5-5-5-5"></path><path d="M21 12H9"></path><path d="M9 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h4"></path></svg>
                         </div>
-                        <h3>Easy to switch</h3>
-                        <p>Import instantly from 1Password, Bitwarden, Apple Passwords, or export freely anytime.</p>
+                        <h3 data-i18n="feat3_title">Easy to switch</h3>
+                        <p data-i18n="feat3_desc">Import instantly from 1Password, Bitwarden, Apple Passwords, Elpass, or a Passo export anytime.</p>
                     </article>
-                    <article class="feature-card glass-panel interactive-card">
+                    <article class="feature-card glass-panel interactive-card stagger-fade-in" style="transition-delay: 0.35s">
                         <div class="feature-icon web-bg">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
                         </div>
-                        <h3>Browser-ready</h3>
-                        <p>Lightning-fast autofill for Safari and Chrome with native iOS and macOS extension support.</p>
+                        <h3 data-i18n="feat4_title">Browser-ready</h3>
+                        <p data-i18n="feat4_desc">Lightning-fast autofill for Safari and Chrome with native iOS and macOS extension support.</p>
                     </article>
                 </div>
             </div>
@@ -195,21 +209,21 @@
 
         <section class="section" id="platforms">
             <div class="container">
-                <div class="cta-panel glass-panel stagger-fade-in" id="download">
+                <div class="cta-panel glass-panel" id="download">
                     <div class="cta-glow"></div>
-                    <div class="cta-content">
-                        <div class="eyebrow glass-pill">Get Passo</div>
-                        <h2>Clean, native password management for iPhone and Mac.</h2>
+                    <div class="cta-content stagger-fade-in" style="transition-delay: 0.1s">
+                        <div class="eyebrow glass-pill" data-i18n="cta_eyebrow">Get Passo</div>
+                        <h2 data-i18n="cta_title">Clean, native password management for iPhone and Mac.</h2>
                     </div>
-                    <div class="hero-actions" style="position: relative; z-index: 10; margin-top: 32px">
-                        <a class="button button-glow" href="#" data-store-link="ios">Download for iPhone</a>
-                        <a class="button button-glass" href="#" data-store-link="mac">Download for Mac</a>
+                    <div class="hero-actions stagger-fade-in" style="position: relative; z-index: 10; margin-top: 32px; transition-delay: 0.2s">
+                        <a class="button button-glow" href="#" data-store-link="ios" data-i18n="cta_dl_ios">Download for iPhone</a>
+                        <a class="button button-glass" href="#" data-store-link="mac" data-i18n="cta_dl_mac">Download for Mac</a>
                     </div>
-                    <div class="platform-row" style="margin-top: 32px">
-                        <div class="platform-chip glass-badge">iOS &amp; iPadOS</div>
-                        <div class="platform-chip glass-badge">macOS Native</div>
-                        <div class="platform-chip glass-badge">Safari Extension</div>
-                        <div class="platform-chip glass-badge">Passkeys</div>
+                    <div class="platform-row stagger-fade-in" style="margin-top: 32px; transition-delay: 0.3s">
+                        <div class="platform-chip glass-badge" data-i18n="chip_ios">iOS &amp; iPadOS</div>
+                        <div class="platform-chip glass-badge" data-i18n="chip_mac">macOS Native</div>
+                        <div class="platform-chip glass-badge" data-i18n="chip_safari">Safari Extension</div>
+                        <div class="platform-chip glass-badge" data-i18n="chip_passkeys">Passkeys</div>
                     </div>
                 </div>
             </div>
@@ -219,13 +233,14 @@
     <footer class="site-footer">
         <div class="container footer-inner">
             <div class="footer-brand">
-                <img src="../../icon.svg" alt="" width="20" height="20">
+                <img src="./icon.svg" alt="" width="20" height="20">
                 <p>Passo</p>
             </div>
-            <a href="../../privacy-policy.html">Privacy Policy</a>
+            <a href="./privacy-policy.html">Privacy Policy</a>
         </div>
     </footer>
 
+    <script src="./script.js"></script>
     <script>
         // Simple observer for fade-in animations on scroll
         document.addEventListener("DOMContentLoaded", () => {
